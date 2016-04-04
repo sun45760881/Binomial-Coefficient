@@ -1,0 +1,40 @@
+#include <stdio.h> 
+#include <stdlib.h> 
+int count = 0;
+
+int main(void) {
+	int n, m;
+	printf("Bin(m,n)\nn=");
+	scanf("%d",&n);
+	printf("m=");
+	scanf("%d",&m);
+	printf("B(%d,%d)=%d\n",n,m,Bin(n,m));
+}
+
+int Bin(int n, int m)
+{
+	int k = max(m, n - m);
+	int a = 1, b = 1;
+	for (int i = n; i > k; i--)  //n*(n-1)*(n-2)*..(k+1)
+	{
+		a = a*i;
+	}
+
+	for (int i = 1; i<=(n-k); i++) //(n-k)!
+	{
+		b = b*i;
+	}
+
+	return a / b;
+
+}
+
+
+/*
+
+n!/[m!(n-m)!]  =======>      [n*(n-1)*(n-2)*..*(k+1)]/(n-k)!
+
+k=max(m,n-m)
+
+
+*/
